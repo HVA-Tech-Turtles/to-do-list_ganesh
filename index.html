@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta charset="UTF-8">
+  <html lang="en"></html>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<link rel="stylesheet" href="style.css">
+<link rel="style" href="bg.jpg">
+
+<form id="listform" >
+<div id="myDIV" class="header">
+  <h1>--------------My_To_Do_List--------------</h1>
+  <input type="text" id="myInput" placeholder="enter the new task.... ">
+  <span onclick="newElement()"class="addBtn">Add</span>
+
+ <select  id="prior" >
+    <option value=" no priority" ></option>
+    <option id="high" value="high" style='color: red'>high</option>
+    <option id="med" value="medium" style='color:blue'>medium</option>
+    <option id="low" value="low" style='color: green'>low</option>
+  </select>
+    
+ </form>
+
+<ul id="myUL">
+  <li>buy eggs</li>  
+  <li>buy fruits</li>
+  <li>buy bread</li>
+  <li>meet grandma</li>
+  <li>call aunty</li> 
+  <li>go to mart</li>
+  <li>meeting at 6pm</li>
+  <li>prepare the project today</li>
+</ul>
+<script>
+  
+  var myNodelist = document.getElementsByTagName("LI");
+  var i;
+  for (i = 0; i < myNodelist.length; i++) {
+    var span = document.createElement("SPAN");
+    var txt = document.createTextNode("\u00D7");
+    span.className = "close";
+    span.appendChild(txt);
+    myNodelist[i].appendChild(span);
+  }
+  
+  var close = document.getElementsByClassName("close");
+  var i;
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+      var div = this.parentElement;
+      div.style.display = "none";
+    }
+  
+  }
+  
+  var list = document.querySelector('ul');
+  list.addEventListener('click', function(ev) {
+    if (ev.target.tagName === 'LI') {
+      ev.target.classList.toggle('checked');
+    
+    }
+  }, false);
+ 
+  function newElement() 
+ {  var prior = document.getElementById("prior").value;
+    console.log(prior);
+   
+    var x = document.getElementById("prior").value;
+    document.getElementById("myUL").innerHTML = x;
+     var li = document.createElement("li");
+      
+  var myNodelist = document.getElementsByTagName("LI");
+
+    
+    
+
+
+    var inputValue = document.getElementById("myInput").value;
+    
+    var t = document.createTextNode(inputValue);
+    li.appendChild(t);
+    if (inputValue === '') {
+      alert("You must write something!");
+    } else {
+      document.getElementById("myUL").appendChild(li);
+    }
+    document.getElementById("myInput").value = "";
+  
+    var span = document.createElement("SPAN");
+    var txt = document.createTextNode("\u00D7");
+    span.className = "close";
+    span.appendChild(txt);
+    li.appendChild(span);
+
+ 
+
+  
+    document.getElementById("myUL").style.backgroundColor ="red";
+    document.getElementsByTagName("li").style.Color = "white";
+  
+                                      }
+
+  </script> 
+</body>
+</html>
