@@ -4,9 +4,8 @@
     box-sizing: border-box;
     
   }
-  .active{
-    color: green;
-  }
+
+  
   body {
     background-image: url("bg2.jpg");
     height: 50px;

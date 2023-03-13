@@ -3,6 +3,9 @@
 <html>
 
   <head>
+    <body>
+    
+    </body>
     <title>TO DO LIST</title>
     <meta charset="UTF-8">
     <html lang="en"></html>
@@ -83,6 +86,11 @@
       
         console.log(prior);
 
+        var inputValue = document.getElementById("myInput").value;
+        var t = document.createTextNode(inputValue);
+        var li = document.createElement("li");
+        li.appendChild(t);
+
         var x = document.getElementById("prior").value;
         document.getElementById("myUL").innerHTML=x;
 
@@ -90,10 +98,7 @@
         var myNodelist = document.getElementsByTagName("li");
         console.log(myNodelist);
  
-        var inputValue = document.getElementById("myInput").value;
-        var t = document.createTextNode(inputValue);
-        var li = document.createElement("li");
-        li.appendChild(t);
+      
 
         document.getElementById("myUL").appendChild(li);
     
@@ -112,6 +117,7 @@
 
  
         document.getElementById("myUL").style.backgroundColor ="green";
+  
         document.getElementsByTagName("li").style.Color = "white";
 
       }
