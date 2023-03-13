@@ -1,11 +1,9 @@
 * 
 
 {
-    box-sizing: border-box;
-    
-  }
-
-  
+  box-sizing: border-box;    
+}
+ 
   body {
     background-image: url("bg2.jpg");
     height: 50px;
@@ -51,10 +49,32 @@
     -ms-user-select: none;
     user-select: none;
   }
-  
 
+  ul li.low {
+    background: green;
+  }
+
+  ul li.low:hover {
+    background: greenyellow;
+  }
+
+  ul li.medium {
+    background: darkgoldenrod;
+  }
+
+  ul li.medium:hover {
+    background: goldenrod;
+  }
+
+  ul li.high {
+    background: darkred;
+  }
+
+  ul li.high:hover {
+    background: red;
+  }
   
-  ul li:hover {
+  ul li.none:hover {
     background: #212138;
   }
   
