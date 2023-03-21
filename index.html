@@ -22,7 +22,7 @@
           <span onclick="newElement()" class="addBtn">Add</span>
       
 
-          <select  id="prior" >
+          <select  id="prior">
             <option id="none" value="none"></option>
             <option id="high" value="high" style='color: red'>high</option>
             <option id="med" value="medium" style='color:goldenrod'>medium</option>
@@ -79,15 +79,16 @@
           }
         }
         // Add a "checked" symbol when clicking on a list item
-        var list = document.querySelector('ul');
-        list.addEventListener('click', function(ev) 
+        var list = document.querySelectorAll('ul');
+        for(var i=0; i<list.length; i++){
+        list[i].addEventListener('click', function(ev) 
         {
           console.log(ev);
           if (ev.target.tagName === 'LI') 
           {
           ev.target.classList.toggle('checked');
           }
-        }, false);
+        }, false);}
        
 
         function newElement() 
@@ -134,9 +135,11 @@
             var div = this.parentElement;
             div.style.display = "none";
           };   
+          var li = document.createElement("li");
+
           li.addEventListener('click', function(ev) 
           {//for checked symbol
-            if (ev.target.tagName === 'li')
+          
               ev.target.classList.toggle('checked');
           }, false);
         
