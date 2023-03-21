@@ -23,20 +23,19 @@
   h1{
     border-style:double;
     margin: 5px;
-  }
-
-  
+  } 
   
   ul {
     margin: 1;
     padding: 0;
+    row-gap: 4;
   }
   
   ul li {
     cursor: pointer;
     position: relative;
     padding: 20px 2px 2px 40px;
-    background: #061641;
+    background: #7a85a4;
     font-size: 18px;
     transition: 0.2s;
     border-style: inset;
@@ -51,31 +50,31 @@
   }
 
   ul li.low {
-    background: green;
+    background: rgb(68, 68, 171);
   }
 
   ul li.low:hover {
-    background: greenyellow;
+    background: rgb(2, 2, 138);
   }
 
   ul li.medium {
-    background: darkgoldenrod;
+    background:rgb(43, 164, 43);
   }
 
   ul li.medium:hover {
-    background: goldenrod;
+    background: rgb(1, 68, 1);
   }
 
   ul li.high {
-    background: darkred;
+    background: rgb(241, 53, 53);
   }
 
   ul li.high:hover {
-    background: red;
+    background: rgb(169, 6, 6);
   }
   
   ul li.none:hover {
-    background: #212138;
+    background: #303058;
   }
   
   ul li.checked {
@@ -134,8 +133,7 @@
     padding: 10px;
     height: 30%;
     padding: 10x;
-    
-
+  
   }
   
   .addBtn {
@@ -149,9 +147,7 @@
     transition: 0.3s;
   
   }
-
-  
   .addBtn:hover {
-    background-color: #faeede;
+    background-color:antiquewhite;
   }
-  
+

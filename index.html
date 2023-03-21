@@ -2,9 +2,7 @@
 <html>
 
   <head>
-    <body>
     
-    </body>
     <title>TO DO LIST</title>
     <meta charset="UTF-8">
     <html lang="en"></html>
@@ -12,104 +10,137 @@
   </head>
 
   <body>
-    <link rel="stylesheet" href="style.css">
-    <link rel="style" href="bg.jpg">
-
-    <form id="listform" >
-
-      <div id="myDIV" class="header">
-        <h1>--------------My_To_Do_List--------------</h1>
-        <input type="text" id="myInput" placeholder="enter the new task.... ">
-        <span onclick="newElement()" class="addBtn">Add</span>
+      <link rel="stylesheet" href="style.css">
+      <link rel="style" href="bg.jpg">
       
 
-        <select  id="prior" >
-          <option value="none"></option>
-          <option id="high" value="high" style='color: red'>high</option>
-          <option id="med" value="medium" style='color:goldenrod'>medium</option>
-          <option id="low" value="low" style='color: green'>low</option>
-        </select>
-      
-    
-    </form>
+      <form id="listform" >
 
-    <ul id="myUL">
-      <li class="none">buy eggs</li>  
-      <li class="none">buy fruits</li>
-      <li class="high">buy bread</li>
-      <li class="none">meet grandma</li>
-      <li class="low">call aunty</li> 
-      <li class="medium">go to mart</li>
-      <li class="none">meeting at 6pm</li>
-      <li class="none">prepare the project today</li>
-    </ul>
-    <br>
-    <span class="savebtn" id="savelist">savelist</span>
+        <div id="myDIV" class="header">
+          <h1>--------------My_To_Do_List--------------</h1>
+          <input type="text" id="myInput" placeholder="enter the new task.... ">
+          <span onclick="newElement()" class="addBtn">Add</span>
+      
+
+          <select  id="prior" >
+            <option id="none" value="none"></option>
+            <option id="high" value="high" style='color: red'>high</option>
+            <option id="med" value="medium" style='color:goldenrod'>medium</option>
+            <option id="low" value="low" style='color: green'>low</option>
+          </select>
+        
+      </form>
+
+      <div>
+        <ul id="highUL">
+          <li class="high">buy bread</li>
+        </ul>
+      </div>
+
+      <div>
+        <ul  id="medUL">
+          <li class="medium">go to mart</li>
+        </ul>
+      </div>
+
+      <div>
+        <ul id="lowUL">
+          <li class="low">call aunty</li>
+        </ul>
+      </div>
+      
+      <div>
+        <ul id="noneUL">
+          <li class="none">buy eggs</li>  
+        </ul>
+      </div>
 
     <script>
-      var myNodelist = document.getElementsByTagName("li");
-      var i;
-      for (i = 0; i < myNodelist.length; i++) 
-      {
-        var span = document.createElement("span");
-        var txt = document.createTextNode("\u00D7");
-        span.className = "close";
-        span.appendChild(txt);
-        myNodelist[i].appendChild(span);
-      }
-      
-      var close = document.getElementsByClassName("close");
-      var i;
-      for (i = 0; i < close.length; i++) 
-      {
-        close[i].onclick = function()  
-        {
-          var div = this.parentElement;
-          div.style.display = "none";
-        }
-      }
-      
-      var list = document.querySelector('ul');
-      list.addEventListener('click', function(ev) {
-        console.log(ev);
-        if (ev.target.tagName === 'LI') {
-          ev.target.classList.toggle('checked');
-        }
-      }, false);
-      
-      function newElement() 
-      { 
-        var prior = document.getElementById("prior").value;
-        
-        console.log(prior);
-        
-        var inputValue = document.getElementById("myInput").value;
-        if (inputValue === '') {
-          alert("You must write something!");
-          return;
-        }
-
-        // var t = document.createTextNode(inputValue);
-        var li = document.createElement("li");
-        li.innerHTML = inputValue;
-        
-        var x = document.getElementById("prior").value;
-        li.className = x;
-        // document.getElementById("myUL").innerHTML=x;        
-        
+        // Creates a "close" button and appends it to each list item
         var myNodelist = document.getElementsByTagName("li");
-        console.log(myNodelist);
+        var i;
+        for (i = 0; i < myNodelist.length; i++) 
+        {
+          var span = document.createElement("span");
+          var txt = document.createTextNode("\u00D7");
+          span.className = "close";
+          span.appendChild(txt);
+          myNodelist[i].appendChild(span);
+        }
+        // Click on a close button to hide the current list item
+        var close = document.getElementsByClassName("close");
+        var i;
+        for (i = 0; i < close.length; i++) 
+        {
+          close[i].onclick = function()  
+          {
+            var div = this.parentElement;
+            div.style.display = "none";
+          }
+        }
+        // Add a "checked" symbol when clicking on a list item
+        var list = document.querySelector('ul');
+        list.addEventListener('click', function(ev) 
+        {
+          console.log(ev);
+          if (ev.target.tagName === 'LI') 
+          {
+          ev.target.classList.toggle('checked');
+          }
+        }, false);
+       
+
+        function newElement() 
+        { // here it get  prority for the new task
+          var prior = document.getElementById("prior").value;
+          console.log(prior);
+          var inputValue = document.getElementById("myInput").value;
+          if (inputValue === '') 
+          {
+            alert("You must write something!");
+            return;
+          }
+          var li = document.createElement("li");
+          li.innerHTML = inputValue;
+          var x = document.getElementById("prior").value;
+          li.className = x;  
+
+          // setting prority for all list items in their appropriate class
+          if (prior=="high")
+          {
+            document.getElementById("highUL").appendChild(li);
+          }
+          else if (prior=="medium")
+          {
+            document.getElementById("medUL").appendChild(li);  
+          }
+          else if (prior=="low")
+          {
+            document.getElementById("lowUL").appendChild(li);  
+          }
+          else if (prior=="none")
+          {
+            document.getElementById("noneUL").appendChild(li);
+          }     
+          document.getElementById("myInput").value = "";
+          var span = document.createElement("SPAN");
+          var txt = document.createTextNode("\u00D7");
+          span.className = "close";
+          span.appendChild(txt);
+          li.appendChild(span);
+  
+          span.onclick = function()  
+          {
+            var div = this.parentElement;
+            div.style.display = "none";
+          };   
+          li.addEventListener('click', function(ev) 
+          {
+            if (ev.target.tagName === 'li')
+              ev.target.classList.toggle('checked');
+          }, false);
         
-        document.getElementById("myUL").appendChild(li);
-        
-        document.getElementById("myInput").value = "";
-        
-        var span = document.createElement("SPAN");
-        var txt = document.createTextNode("\u00D7");
-        span.className = "close";
-        span.appendChild(txt);
-        li.appendChild(span);        
-      }
-    </script> 
+        }
+    </script>
   </body>
 </html>
